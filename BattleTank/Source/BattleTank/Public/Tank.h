@@ -28,7 +28,7 @@ public:
 
 private:
 	UPROPERTY(EditAnyWhere, Category = Firing)
-		float LaunchSpeed = 100000; // Sensible starting value of 1000m/s
+		float LaunchSpeed = 4000; // Sensible starting value of 1000m/s
 
 protected:
 	// Called when the game starts or when spawned
