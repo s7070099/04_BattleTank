@@ -31,15 +31,17 @@ public:
 	void Fire();
 
 private:
-	UPROPERTY(EditAnyWhere, Category = Firing)
-		float LaunchSpeed = 4000; // Sensible starting value of 1000m/s
-
-	UPROPERTY(EditAnyWhere, Category = Setup)
-		TSubclassOf<AProjectile> ProjectileBlueprint;//UClass* ProjectileBlueprint;
-
 	UTankBarrel* Barrel = nullptr;
 
-	float ReloadTimeInSeconds = 3;
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		float LaunchSpeed = 4000; // Sensible starting value of 1000m/s
+
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;//UClass* ProjectileBlueprint;
+
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		float ReloadTimeInSeconds = 3;
+
 	double LastFireTime = 0;
 
 protected:
