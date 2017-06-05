@@ -13,6 +13,10 @@ class BATTLETANK_API AProjectile : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AProjectile();
+	void LaunchProjectile(float Speed);
+
+private:
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
 
 protected:
 	// Called when the game starts or when spawned
