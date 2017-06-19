@@ -24,6 +24,7 @@ public:
 
 private:
 	ATank();
+	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000; // Sensible starting value of 1000m/s
