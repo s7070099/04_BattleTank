@@ -1,6 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Teruyo Ltd.
 
 #include "BattleTank.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 #include "TankPlayerController.h"
 
@@ -17,6 +18,11 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController possesing %s"), *(ControlledTank->GetName()));
 	}
+
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (AimingComponent) FoundAimingComponent(AimingComponent);
+	else
+		UE_LOG(LogTemp, Warning, TEXT("No Aiming Component"));
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
