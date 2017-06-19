@@ -1,4 +1,4 @@
-//Copyright Teruyo Ltd.
+// Copyright Teruyo Ltd.
 
 #include "BattleTank.h"
 #include "TankMovementComponent.h"
