@@ -8,6 +8,7 @@
 class UTankBarrel; // Forward Declaration
 class UTankTurret;
 class UTankAimingComponent;
+class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -25,6 +26,7 @@ private:
 	ATank();
 	virtual void BeginPlay() override;
 
+	// TODO remove one firing is moved to aiming component
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000; // Sensible starting value of 1000m/s
 
