@@ -3,8 +3,6 @@
 #include "BattleTank.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
-#include "TankMovementComponent.h"
 #include "Tank.h"
 
 
@@ -18,18 +16,13 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay(); //Needed for BP Begin Play to run!
-
-	auto TankName = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s KAGUYA: Tank C++ Begin Play"), *TankName);
-
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATank::Fire()
 {
 	if (!ensure(Barrel)) return;
 
-	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	/*bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 	if (isReloaded) 
 	{
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
@@ -40,12 +33,12 @@ void ATank::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
-	}
+	}*/
 }
 
-void ATank::AimAt(FVector HitLocation)
+/*void ATank::AimAt(FVector HitLocation)
 {
 	if (!ensure(TankAimingComponent)) return;
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
-
+*/
