@@ -1,8 +1,8 @@
 // Copyright Teruyo Ltd.
 
 #include "BattleTank.h"
-#include "TankMovementComponent.h"
 #include "TankTrack.h"
+#include "TankMovementComponent.h"
 
 void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 {
