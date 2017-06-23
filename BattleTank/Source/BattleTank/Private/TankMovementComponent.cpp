@@ -32,6 +32,7 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 	if (!ensure(LeftTrack) || !ensure(RightTrack)) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
+	//UE_LOG(LogTemp, Warning, TEXT("Left Track: %f, Right Track: %f"), Throw, -Throw);
 }
 
 /*void UTankMovementComponent::IntendTurnLeft(float Throw)
