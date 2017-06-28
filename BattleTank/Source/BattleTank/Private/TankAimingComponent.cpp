@@ -36,7 +36,9 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	//UE_LOG(LogTemp, Warning, TEXT("KAGUYA <3"));
 	//UE_LOG(LogTemp, Warning, TEXT("((%f - %f) > %f) == %s"), FPlatformTime::Seconds(), LastFireTime, ReloadTimeInSeconds, ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds) ? "True" : "False");
-	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
+	if (RoundsLeft <= 0)
+		FiringState = EFiringState::OutOfAmmo;
+	else if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
 		FiringState = EFiringState::Reloading;
 	else if (IsBarrelMoving())
 		FiringState = EFiringState::Aiming;
@@ -49,6 +51,10 @@ EFiringState UTankAimingComponent::GetFiringState() const
 	return FiringState;
 }
 
+int UTankAimingComponent::GetRoundsLeft() const
+{
+	return RoundsLeft;
+}
 
 bool UTankAimingComponent::IsBarrelMoving()
 {
@@ -110,7 +116,7 @@ void UTankAimingComponent::MoveBarrelTowards()
 
 void UTankAimingComponent::Fire()
 {
-	if (FiringState == EFiringState::Reloading) return;
+	if (FiringState == EFiringState::Reloading || FiringState == EFiringState::OutOfAmmo) return;
 
 	if (!ensure(Barrel)) return;
 	if (!ensure(ProjectileBlueprint)) return;
@@ -126,4 +132,5 @@ void UTankAimingComponent::Fire()
 
 	Projectile->LaunchProjectile(LaunchSpeed);
 	LastFireTime = FPlatformTime::Seconds();
+	RoundsLeft--;
 }
