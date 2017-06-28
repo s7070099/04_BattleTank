@@ -1,5 +1,6 @@
 *.VC.db
 Content/StarterContent/
+Content/_Level/BattleGround_Hi_ignore.umap
 
 # Visual Studio 2015 user specific files
 .vs/
